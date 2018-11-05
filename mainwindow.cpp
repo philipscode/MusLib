@@ -30,12 +30,10 @@ void MainWindow::on_mediaStatusChanged(QMediaPlayer::MediaStatus status)
     qDebug() << status;
     if (status == QMediaPlayer::LoadedMedia)
     {
-        QStringList infoList = player->availableMetaData();
-        qDebug() << player->isMetaDataAvailable();
-        qDebug() << infoList.size();
-        foreach (QString info, infoList) {
-            qDebug() << info;
-        }
-        player->stop();
+        player->setVolume(50);
+        player->play();
+        qDebug() << player->metaData(QMediaMetaData::Title).toString();
+        qDebug() << player->metaData(QMediaMetaData::AlbumTitle).toString();
+        qDebug() << player->metaData(QMediaMetaData::Author).toString();
     }
 }
