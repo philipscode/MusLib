@@ -13,41 +13,99 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QTabBar::tab{
+color:white;
+}
+
+QTabBar::tab:selected { 
+background-color:  red;
+}
+
+QTabBar::tab:!selected {
+background-color:  black;
+}
+
+QPushButton{
+color:white;
+}
+
+QPushButton:!pressed {
+background-color: red;
+}
+
+QPushButton:pressed {
+background-color:black;
+}</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Songs</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QTableWidget" name="tableWidget"/>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>Albums</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Artists</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_4">
-       <attribute name="title">
-        <string>Videos</string>
-       </attribute>
-      </widget>
-     </widget>
-    </item>
-   </layout>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>90</y>
+      <width>278</width>
+      <height>242</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Songs</string>
+     </attribute>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QTableWidget" name="tableWidget"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Albums</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Artists</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_4">
+     <attribute name="title">
+      <string>Videos</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="playButton">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>40</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Play</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pauseButton">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>40</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Pause</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

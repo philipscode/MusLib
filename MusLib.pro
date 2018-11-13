@@ -25,10 +25,27 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    unit.cpp \
+    song.cpp \
+    video.cpp \
+    module.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    unit.h \
+    song.h \
+    video.h \
+    module.h
 
 FORMS += \
         mainwindow.ui
+
+
+LIBS += -L/usr/local/include/taglib-1.11.1/taglib/ -ltag
+INCLUDEPATH += /usr/local/include/taglib/
+DEPENDPATH += /usr/local/include/taglib-1.11.1/taglib/
+
+LIBS += -framework IOKit
+
+LIBS += -lz

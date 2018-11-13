@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     player = new QMediaPlayer();
 
     connect(player, SIGNAL(mediaStatusChanged(QMediaPlayer::MediaStatus)),
-            this, SLOT(on_mediaStatusChanged(QMediaPlayer::MediaStatus)));
+            this, SLOT(onMediaStatusChanged(QMediaPlayer::MediaStatus)));
 }
 
 MainWindow::~MainWindow()
@@ -22,18 +22,43 @@ void MainWindow::on_actionAdd_to_Library_triggered()
     QString filter = "All Files (*.*) ;; Flac files (*.flac)";
     QString fileName = QFileDialog::getOpenFileName(this,"Choose your content",
                                                     QDir::homePath(), filter);
-    player->setMedia(QUrl::fromLocalFile(fileName));
+
+    TagLib::FileRef file(fileName.toUtf8());
+    TagLib::String titleString = file.tag()->title();
+    TagLib::String artistString = file.tag()->artist();
+    TagLib::String albumString = file.tag()->album();
+    int duration = file.audioProperties()->lengthInSeconds();
+    int year = file.tag()->year();
+
+    QString title = QString::fromStdWString(titleString.toWString());
+    QString artist = QString::fromStdWString(artistString.toWString());
+    QString album = QString::fromStdWString(albumString.toWString());
+    song = new Song(title, album, artist, duration, year, fileName);
+
+    qDebug() << song->getTitle();
+    qDebug() << song->getAlbum();
+    qDebug() << song->getArtist();
+    qDebug() << song->getDuration();
+    qDebug() << song->getYear();
+    qDebug() << song->getPath();
 }
 
-void MainWindow::on_mediaStatusChanged(QMediaPlayer::MediaStatus status)
+/*void MainWindow::onMediaStatusChanged(QMediaPlayer::MediaStatus status)
 {
-    qDebug() << status;
-    if (status == QMediaPlayer::LoadedMedia)
+    if (status == QMediaPlayer::BufferedMedia)
     {
-        player->setVolume(50);
-        player->play();
-        qDebug() << player->metaData(QMediaMetaData::Title).toString();
-        qDebug() << player->metaData(QMediaMetaData::AlbumTitle).toString();
+        qDebug() << "In here";
         qDebug() << player->metaData(QMediaMetaData::Author).toString();
+        player->stop();
     }
+}*/
+
+void MainWindow::on_playButton_clicked()
+{
+    song->play();
+}
+
+void MainWindow::on_pauseButton_clicked()
+{
+    song->pause();
 }

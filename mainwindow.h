@@ -11,6 +11,13 @@
 #include <QStringList>
 #include <QDebug>
 
+#include "tag.h"
+#include "fileref.h"
+#include "unit.h"
+#include "song.h"
+#include "video.h"
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -26,11 +33,16 @@ public:
 private slots:
     void on_actionAdd_to_Library_triggered();
 
-    void on_mediaStatusChanged(QMediaPlayer::MediaStatus);
+    /*void onMediaStatusChanged(QMediaPlayer::MediaStatus);*/
+
+    void on_playButton_clicked();
+
+    void on_pauseButton_clicked();
 
 private:
     Ui::MainWindow *ui;
     QMediaPlayer *player;
+    Song *song;
 };
 
 #endif // MAINWINDOW_H
