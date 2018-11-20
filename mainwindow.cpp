@@ -19,8 +19,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionAdd_to_Library_triggered()
 {
-    QString filter = "All Files (*.*) ;; Flac files (*.flac)";
-    QString fileName = QFileDialog::getOpenFileName(this,"Choose your content",
+    /*std::string filter = "All Files (*.*) ;; Flac files (*.flac)";
+    std::string fileName = QFileDialog::getOpenFileName(this,"Choose your content",
                                                     QDir::homePath(), filter);
 
     TagLib::FileRef file(fileName.toUtf8());
@@ -30,9 +30,9 @@ void MainWindow::on_actionAdd_to_Library_triggered()
     int duration = file.audioProperties()->lengthInSeconds();
     int year = file.tag()->year();
 
-    QString title = QString::fromStdWString(titleString.toWString());
-    QString artist = QString::fromStdWString(artistString.toWString());
-    QString album = QString::fromStdWString(albumString.toWString());
+    std::string title = std::string::fromStdWString(titleString.toWString());
+    std::string artist = std::string::fromStdWString(artistString.toWString());
+    std::string album = std::string::fromStdWString(albumString.toWString());
     song = new Song(title, album, artist, duration, year, fileName);
 
     qDebug() << song->getTitle();
@@ -40,7 +40,7 @@ void MainWindow::on_actionAdd_to_Library_triggered()
     qDebug() << song->getArtist();
     qDebug() << song->getDuration();
     qDebug() << song->getYear();
-    qDebug() << song->getPath();
+    qDebug() << song->getPath();*/
 }
 
 /*void MainWindow::onMediaStatusChanged(QMediaPlayer::MediaStatus status)

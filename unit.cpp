@@ -1,17 +1,17 @@
 #include "unit.h"
 
 
-QString Unit::getArtist() const
+std::string Unit::getArtist() const
 {
     return artist;
 }
 
-QString Unit::getTitle() const
+std::string Unit::getTitle() const
 {
     return title;
 }
 
-QString Unit::getPath() const
+std::string Unit::getPath() const
 {
     return path;
 }
@@ -26,17 +26,17 @@ int Unit::getYear() const
     return year;
 }
 
-void Unit::setArtist(QString &_artist)
+void Unit::setArtist(const std::string &_artist)
 {
     artist = _artist;
 }
 
-void Unit::setTitle(QString &_title)
+void Unit::setTitle(const std::string &_title)
 {
     title = _title;
 }
 
-void Unit::setPath(QString &_path)
+void Unit::setPath(const std::string &_path)
 {
     path = _path;
 }

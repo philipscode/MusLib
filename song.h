@@ -8,19 +8,19 @@ class Song : public Unit
 {
 public:
     Song();
-    Song(QString, QString, QString, int, int, QString);
+    Song(std::string, std::string, std::string, int, int, std::string);
     Song(const Song&);
     Song (Song&&);
 
-    QString getAlbum() const;
-    void setAlbum(QString&);
+    std::string getAlbum() const;
+    void setAlbum(std::string&);
 
     void play() override;
     void pause() override;
     void forward() override;
     void back() override;
 private:
-    QString albumTitle;
+    std::string albumTitle;
     QMediaPlayer *player = new QMediaPlayer();
 };
 
