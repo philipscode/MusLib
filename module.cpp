@@ -1,6 +1,7 @@
 #include "module.h"
 
 #include <iostream>
+#include <functional>
 
 
 Module::Module()
@@ -15,7 +16,7 @@ Module::Module(const Module &other)
     size_ = 0;
     for (iterator it = other.begin(); it != other.end(); it++)
     {
-        this->push((*it));
+        this->pushBack(*it);
         ++size_;
     }
 }
@@ -28,10 +29,14 @@ Module::iterator Module::begin() const
 //Need finishing
 Module::iterator Module::end() const
 {
+    if (last == nullptr)
+    {
+        return nullptr;
+    }
     return iterator(last->next);
 }
 
-void Module::insert(Unit *item)
+void Module::insert(Unit *item, function_bool &rule)
 {
     Node *tmp = new Node();
     tmp->data = item;
@@ -43,7 +48,7 @@ void Module::insert(Unit *item)
     else
     {
         iterator it = begin();
-        while (it != end() && ((*it)->getTitle() < item->getTitle()))
+        while (it != end() && (rule(*it, item)))
         {
             ++it;
         }
@@ -75,15 +80,17 @@ void Module::popBack()
 {
     if (size_)
     {
+        Node *tmp = last;
         last = last->prev;
+        delete tmp;
         --size_;
     }
 }
 
-void Module::remove(const std::string &str)
+void Module::remove(const std::string &str, function_str &target)
 {
     iterator it = begin();
-    while (it != end() && ((*it)->getTitle() != str))
+    while (it != end() && (target(*it) != str))
     {
         ++it;
     }
@@ -112,11 +119,11 @@ void Module::remove(const std::string &str)
 
 void Module::removeAll()
 {
-    while (first)
+    while (last)
     {
         this->popBack();
     }
-    size_ = 0;
+    first = last;
 }
 
 int Module::size() const
@@ -124,7 +131,7 @@ int Module::size() const
     return size_;
 }
 
-void Module::push(Unit *other)
+void Module::pushBack(Unit *other)
 {
     Node *tmp = new Node();
     if (first)

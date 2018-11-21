@@ -4,10 +4,15 @@
 #include "song.h"
 #include "video.h"
 
+#include <functional>
+
 
 class Module
 {
 public:
+    using function_bool = const std::function<bool(Unit*, Unit*)>;
+    using function_str = const std::function<std::string(Unit*)>;
+
     struct Node
     {
         Node();
@@ -42,17 +47,16 @@ public:
     iterator begin() const;
     iterator end() const;
 
-    void insert(Unit*);
+    void insert(Unit*, function_bool &rule = [](Unit *a, Unit *b) { return true; });
+    void pushBack(Unit*);
     void popBack();
-    void remove(const std::string&);
+    void remove(const std::string&, function_str&);
     void removeAll();
     int size() const;
 
 private:
     int size_;
     Node *first, *last;
-
-    void push(Unit*);
 };
 
 #endif // MODULE_H

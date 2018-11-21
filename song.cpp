@@ -3,57 +3,53 @@
 
 Song::Song()
 {
-    title = albumTitle = artist = "untitled";
-    duration = 0;
-    year = QDate::currentDate().year();
-    path = "";
+    title_ = albumTitle_ = artist_ = "untitled";
+    year_ = QDate::currentDate().year();
+    path_ = "";
 }
 
-Song::Song(std::string _title, std::string _albumTitle, std::string _artist,
-           int _duration, int _year, std::string _path)
+Song::Song(std::string title, std::string albumTitle, std::string artist,
+           std::string path, int year)
 {
-    title = _title;
-    albumTitle = _albumTitle;
-    artist = _artist;
-    duration = _duration;
-    year = _year;
-    path = _path;
+    title_ = title;
+    albumTitle_ = albumTitle;
+    artist_ = artist;
+    path_ = path;
+    year_ = year;
     //player->setMedia(QUrl::fromLocalFile(path));
     //player->setVolume(50);
 }
 
 Song::Song(const Song &other)
 {
-    title = other.getTitle();
-    albumTitle = other.getAlbum();
-    artist = other.getArtist();
-    duration = other.getDuration();
-    year = other.getYear();
-    path = other.getPath();
+    title_ = other.getTitle();
+    albumTitle_ = other.getAlbum();
+    artist_ = other.getArtist();
+    path_ = other.getPath();
+    year_ = other.getYear();
     //player->setMedia(QUrl::fromLocalFile(path));
     //player->setVolume(50);
 }
 
 Song::Song(Song &&other)
 {
-    title = other.getTitle();
-    albumTitle = other.getAlbum();
-    artist = other.getArtist();
-    duration = other.getDuration();
-    year = other.getYear();
-    path = other.getPath();
+    title_ = other.getTitle();
+    albumTitle_ = other.getAlbum();
+    artist_ = other.getArtist();
+    path_ = other.getPath();
+    year_ = other.getYear();
     //player->setMedia(QUrl::fromLocalFile(path));
     //player->setVolume(50);
 }
 
 std::string Song::getAlbum() const
 {
-    return albumTitle;
+    return albumTitle_;
 }
 
-void Song::setAlbum(std::string &_albumTitle)
+void Song::setAlbum(std::string &albumTitle)
 {
-    albumTitle = _albumTitle;
+    albumTitle_ = albumTitle;
 }
 
 void Song::play()

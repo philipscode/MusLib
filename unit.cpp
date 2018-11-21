@@ -3,50 +3,41 @@
 
 std::string Unit::getArtist() const
 {
-    return artist;
+    return artist_;
 }
 
 std::string Unit::getTitle() const
 {
-    return title;
+    return title_;
 }
 
 std::string Unit::getPath() const
 {
-    return path;
-}
-
-int Unit::getDuration() const
-{
-    return duration;
+    return path_;
 }
 
 int Unit::getYear() const
 {
-    return year;
+    return year_;
 }
 
-void Unit::setArtist(const std::string &_artist)
+void Unit::setArtist(const std::string &artist)
 {
-    artist = _artist;
+    artist_ = artist;
 }
 
-void Unit::setTitle(const std::string &_title)
+void Unit::setTitle(const std::string &title)
 {
-    title = _title;
+    title_ = title;
 }
 
-void Unit::setPath(const std::string &_path)
+void Unit::setPath(const std::string &path)
 {
-    path = _path;
+    path_ = path;
 }
 
-void Unit::setDuration(int _duration)
-{
-    duration = _duration;
-}
 
-void Unit::setYear(int _year)
+void Unit::setYear(int year)
 {
-    year = _year;
+    year_ = year;
 }

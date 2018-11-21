@@ -8,7 +8,7 @@ class Song : public Unit
 {
 public:
     Song();
-    Song(std::string, std::string, std::string, int, int, std::string);
+    Song(std::string, std::string, std::string, std::string, int);
     Song(const Song&);
     Song (Song&&);
 
@@ -20,7 +20,7 @@ public:
     void forward() override;
     void back() override;
 private:
-    std::string albumTitle;
+    std::string albumTitle_;
     QMediaPlayer *player = new QMediaPlayer();
 };
 
