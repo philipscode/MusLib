@@ -47,14 +47,5 @@ FORMS += \
     addform.ui \
     appwindow.ui
 
-
-LIBS += -L/usr/local/include/taglib-1.11.1/taglib/ -ltag
-INCLUDEPATH += /usr/local/include/taglib/
-DEPENDPATH += /usr/local/include/taglib-1.11.1/taglib/
-
-LIBS += -framework IOKit
-
-LIBS += -lz
-
 RESOURCES += \
     images.qrc
