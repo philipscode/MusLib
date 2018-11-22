@@ -29,17 +29,23 @@ SOURCES += \
     unit.cpp \
     song.cpp \
     video.cpp \
-    module.cpp
+    module.cpp \
+    addform.cpp \
+    appwindow.cpp
 
 HEADERS += \
         mainwindow.h \
     unit.h \
     song.h \
     video.h \
-    module.h
+    module.h \
+    addform.h \
+    appwindow.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    addform.ui \
+    appwindow.ui
 
 
 LIBS += -L/usr/local/include/taglib-1.11.1/taglib/ -ltag
@@ -49,3 +55,6 @@ DEPENDPATH += /usr/local/include/taglib-1.11.1/taglib/
 LIBS += -framework IOKit
 
 LIBS += -lz
+
+RESOURCES += \
+    images.qrc
